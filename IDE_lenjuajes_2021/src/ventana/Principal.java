@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import archivo.Editor;
 import automata.Guia;
+import buscador.Buscar;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -105,6 +106,7 @@ public class Principal extends JFrame implements ActionListener {
 		
 		scrollPane.setViewportView(panel_2);
 		panel_2.setLayout(new BorderLayout(0, 0));
+		textAreaNumero.setEditable(false);
 		panel_2.add(textAreaNumero, BorderLayout.WEST);
 		textAreaNumero.setBorder(new LineBorder(new Color(0, 0, 0)));
 		textAreaNumero.setPreferredSize(new Dimension(30, 22));
@@ -255,7 +257,10 @@ public class Principal extends JFrame implements ActionListener {
 			Guia g = new Guia();
 			g.paso1(textAreaEditar, textArea, tableInformacion);
 		}else if(evento.getActionCommand().equals(BUSCAR)) {
-			
+			String cadena = JOptionPane.showInputDialog("introdusca la palabra");
+			Buscar bs = new Buscar(cadena,textAreaEditar );
+			bs.creaarEstados();
+			bs.encontrar();
 		}
 	}
 	
