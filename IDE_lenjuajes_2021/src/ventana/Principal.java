@@ -30,6 +30,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
+import java.awt.Toolkit;
 
 public class Principal extends JFrame implements ActionListener {
 
@@ -71,6 +72,8 @@ public class Principal extends JFrame implements ActionListener {
 	private final JButton btnBuscar = new JButton("Buscar");
 
 	public Principal() {
+		setTitle("Ger 12 IDE 2021");
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Ger12\\git\\IDE_LENGUAJES _2021\\IDE_lenjuajes_2021\\src\\ventana\\ger12.jpg"));
 		contentPane = new JPanel();
 		editor = new Editor();
 
