@@ -4,6 +4,13 @@ public class Token {
 	String tipo, palabra;
 	int fila, columna;
 	
+	/**
+	 * describe un tipo de token 
+	 * @param tipo el tipo de token numero, decimal, palabra, aperador, agrupacion
+	 * @param palabra que es de ese tipo 
+	 * @param fila donde se encuentra la palabra 
+	 * @param columna donde se encuentra la palabra
+	 */
 	public Token(String tipo, String palabra, int fila, int columna) {
 		this.tipo = tipo;
 		this.palabra = palabra;

@@ -1,7 +1,5 @@
 package archivo;
 
-import java.io.IOError;
-
 public class Editor {
 	
 	private Archivo archivo;
@@ -31,10 +29,20 @@ public class Editor {
 		return contenido;
 	}
 
+	/**
+	 * crea un nuevo archivo 
+	 */
 	public void crear() {
 		archivo = null;
 	}
 	
+	
+	/**
+	 * metodo para guardar contenido de texto en un archivo 
+	 * @param contendio del archivo 
+	 * @param ruta en donde se guardara el conenido 
+	 * @throws Exception si no hay archivo 
+	 */
 	public void guardar(String contendio, String ruta) throws Exception {
 		if(archivo == null) {
 			archivo = new Archivo(ruta);
@@ -48,6 +56,10 @@ public class Editor {
 		}
 	}
 	
+	/**
+	 * retorna un archivo nuevo 
+	 * @return
+	 */
 	public boolean esArchivoNuevo() {
 		return archivo == null;
 	}

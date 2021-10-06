@@ -8,6 +8,12 @@ public class Estado {
 	private char letra;
 	private int siguiente;
 	
+	/**
+	 * crea un estado 
+	 * @param actual el estado actual 
+	 * @param letra con la cual se mover 
+	 * @param siguiente el estado al que apunta
+	 */
 	public Estado(int actual, char letra, int siguiente) {
 		super();
 		this.actual = actual;
@@ -15,6 +21,11 @@ public class Estado {
 		this.siguiente = siguiente;
 	}
 	
+	/**
+	 * verifica si puede continuar con la letra de entrada
+	 * @param letra entrada para la verificiacion con la compativilidad del estado
+	 * @return
+	 */
 	public boolean camino(char letra) {
 		boolean movido = false;
 		if (this.letra == letra) {

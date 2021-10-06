@@ -21,7 +21,11 @@ public class Buscar {
 	PanelMuestra pm = new PanelMuestra();
 	JTextPane salida = pm.getTextpaneBusqueda();
 	
-	
+	/**
+	 * optiene la palabra a buscar
+	 * @param palabraBuscar String palabra que se buscara en el editor 
+	 * @param entrada el texto en el editor atrabes de un jTextarea
+	 */
 	public Buscar(String palabraBuscar, JTextArea entrada ) {
 		this.palabraBuscar = palabraBuscar;
 		this.entrada = entrada;
@@ -31,6 +35,10 @@ public class Buscar {
 		
 	}
 
+	/**
+	 * utiliza la misma idea del automata genera estados apartir de la palabra de entrada para
+	 * busqueda
+	 */
 	public void creaarEstados() {
 		for (int i = 0; i < palabraBuscar.length(); i++) {
 			char letra = palabraBuscar.charAt(i);
@@ -46,6 +54,9 @@ public class Buscar {
 	
 	}
 	
+	/**
+	 * con los estados creados ejecuta la busqueda en el texto de entrada 
+	 */
 	public void encontrar() {
 		int actual = 0;
 		
@@ -68,7 +79,13 @@ public class Buscar {
 		}		
 	}
 	
+	
 	int coincidencias = 0 ;
+	
+	/**
+	 * colorea la palabra que conincidan con la busqueda, de color rojo 
+	 * @param fin entero que indica la posicion de la pabalara, la ultima letra
+	 */
 	public void pintar(int fin) {
 		coincidencias ++;
 		int termina = fin+1;

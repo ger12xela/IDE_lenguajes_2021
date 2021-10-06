@@ -15,6 +15,11 @@ public class Archivo {
 		archivo = new File(nombreArchivo);
 	}
 
+	/**
+	 * manejara los textos en un archivo 
+	 * @return
+	 * @throws IOException
+	 */
 	public String getContenido() throws IOException{
 		String contenido="";
 		FileReader fr = new FileReader(archivo);

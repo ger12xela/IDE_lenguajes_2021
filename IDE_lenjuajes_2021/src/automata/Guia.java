@@ -10,7 +10,7 @@ public class Guia {
 
 	}
 
-	Automata aut = new Automata();
+	// array de estados predeterminados para el atomata 
 	private int[] estadosAcepatacion = { 1, 2, 3, 4, 6, 7, 8 };
 	private Estado[] estados = { 
 			new Estado(0, '+', 1), 
@@ -53,6 +53,13 @@ public class Guia {
 
 	private JTable table;
 
+	/**
+	 * inicia el automata 
+	 * @param panelEditar panel donde esta ocurriendo la edicion
+	 * @param panelText panel donde se describe el camino del automata
+	 * @param tablaInformacion tabla donde se presenta la informacion
+	 * @return
+	 */
 	public String paso1(JTextArea panelEditar, JTextArea panelText, JTable tablaInformacion) {
 
 		table = tablaInformacion;
@@ -125,6 +132,11 @@ public class Guia {
 		return null;
 	}
 
+	/**
+	 * comprueba la entra con los estados
+	 * @param estado estado actual
+	 * @return verdadero  si es compatible con el estado, falso si es error con este estado
+	 */
 	public boolean perteneceAceptacion(int estado) {
 		boolean aceptado = false;
 		for (int i = 0; i < estadosAcepatacion.length; i++) {
@@ -135,8 +147,17 @@ public class Guia {
 		return aceptado;
 	}
 
+	// array de tokens encontrados 
 	ArrayList<Token> lista = new ArrayList<Token>();
 
+	/**
+	 * identifica a que tipo de token pertenese, incluye el token error
+	 * @param Actual el estado actual que hace referencia al estado de aceptacion 
+	 * si es igual a 200 es conciderado un error 
+	 * @param palabra la palabra que se examino 
+	 * @param fila la linea donde se encuentra la palabra
+	 * @param columna la columna donde se encuentra la palabra 
+	 */
 	public void tipoToken(int Actual, String palabra, int fila, int columna) {
 
 		Token tk;
@@ -176,6 +197,9 @@ public class Guia {
 		mostrar();
 	}
 
+	/**
+	 * llena la tabla de salida con los tokens ya identificados 
+	 */
 	public void mostrar() {
 		String[][] matris = new String[lista.size()][4];
 		if (recuentoErrores()) {
@@ -211,6 +235,11 @@ public class Guia {
 
 	}
 
+	/**
+	 * cuenta los errores, si es mayor a 0 solo se mostraran en la tabla de salida los errores
+	 * 
+	 * @return verdadero si cantidad de errores es mayor a 0 y falso si no hay errores
+	 */
 	public boolean recuentoErrores() {
 		boolean a = false;
 		int cantidadErrores = 0;
@@ -224,6 +253,12 @@ public class Guia {
 		return a;
 	}
 
+	/**
+	 * verifica si es la entrada es un espacio o un salto de linea
+	 * @param letra la entrada a verificar
+	 * @return verdadero si es una letra para comprobar y falso si es un espacio o salto
+	 * de liena 
+	 */
 	public boolean espacioEnter(char letra) {
 		boolean espacioLiena = false;
 		int valor = letra;

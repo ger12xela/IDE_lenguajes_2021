@@ -19,7 +19,9 @@ public class PanelMuestra extends JFrame {
 	private JTextField textFieldCoin;
 	private JTextPane textPaneBusqueda;
 
-	
+	/**
+	 * crea el panel de salida para la busqueda
+	 */
 	public PanelMuestra() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

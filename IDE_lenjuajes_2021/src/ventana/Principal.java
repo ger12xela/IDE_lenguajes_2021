@@ -29,7 +29,6 @@ import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import java.awt.FlowLayout;
 import javax.swing.JButton;
 
 public class Principal extends JFrame implements ActionListener {
@@ -125,7 +124,6 @@ public class Principal extends JFrame implements ActionListener {
 					
 					linea +=1;
 				} catch (BadLocationException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				total = textAreaEditar.getLineCount();
@@ -183,6 +181,7 @@ public class Principal extends JFrame implements ActionListener {
 		));
 		
 		panel_1.add(tableInformacion);
+		textArea.setBorder(new LineBorder(Color.BLACK, 2));
 		
 		panel_1.add(textArea);
 	}
@@ -198,7 +197,9 @@ public class Principal extends JFrame implements ActionListener {
 	}
 
 
-
+	/**
+	 * comando para abrir un archivo
+	 */
 	public void abrirArchivo() {
 		JFileChooser fc = new JFileChooser();
 		if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
@@ -216,11 +217,17 @@ public class Principal extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * crear un nuevo archivo 
+	 */
 	public void crearArchivo() {
 		editor.crear();
 		this.refrescarcontenido("");
 	}
 
+	/**
+	 * guardar archivo 
+	 */
 	public void guardarArchivo() {
 		
 		String contenido ="";
@@ -242,6 +249,9 @@ public class Principal extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * acciones de botosnes
+	 */
 	@Override
 	public void actionPerformed(ActionEvent evento) {
 		if (evento.getActionCommand().equals(ABRIR)) {
@@ -264,6 +274,11 @@ public class Principal extends JFrame implements ActionListener {
 		}
 	}
 	
+	/**
+	 * llena los indicadores de fila y comuna
+	 * @param fila
+	 * @param columna
+	 */
 	public void filaComuna(int fila,int columna) {
 		labelFila.setText("fila: "+fila);
 		labelColumna.setText("columna; "+columna);
