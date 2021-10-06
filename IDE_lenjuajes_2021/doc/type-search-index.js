@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"archivo","l":"Archivo"},{"p":"buscador","l":"Buscar"},{"p":"archivo","l":"Editor"},{"p":"automata","l":"Estado"},{"p":"automata","l":"EstadoRango"},{"p":"automata","l":"Guia"},{"p":"casa","l":"Inicio"},{"p":"buscador","l":"PanelMuestra"},{"p":"ventana","l":"Principal"},{"p":"automata","l":"Token"}]
