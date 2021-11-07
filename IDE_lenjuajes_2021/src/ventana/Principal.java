@@ -85,7 +85,7 @@ public class Principal extends JFrame implements ActionListener {
 		menuBar.add(inicio);
 
 		inicio.add(itmCrear);
-		itmCrear.setActionCommand(CREAR);
+		itmCrear.setActionCommand(CREAR);  //agregar una constante para el boton 
 		itmCrear.addActionListener(this);
 
 		inicio.add(itmAbrir);
