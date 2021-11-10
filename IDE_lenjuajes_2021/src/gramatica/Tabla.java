@@ -2,6 +2,8 @@ package gramatica;
 
 import java.util.Stack;
 
+import automata.Token;
+
 public class Tabla {
 
 	Casilla _00 = new Casilla();
@@ -68,10 +70,12 @@ public class Tabla {
 
 	Stack<Produccion> principal = new Stack<Produccion>();
 
-	public void recorrido(String nombre) {
+	public void recorrido(Token tkn) {
+		String nombre = tkn.getTipo();
 		int fila = 0;
 		int columna = 0;
 		boolean reduce = false;
+		while (reduce == false) {
 
 		if (principal.empty()) {
 			principal.push(new Produccion("ter", true));
@@ -79,9 +83,8 @@ public class Tabla {
 
 		}
 
-		while (reduce == false) {
 			this.imprimir();
-			System.out.println("recibido ------"+nombre);
+			System.out.println("recibido ------" + nombre);
 
 			for (int i = 1; i < matriz.length; i++) {
 				if (matriz[i][0].getPila().peek().getNombre().equals(principal.peek().getNombre())) {
@@ -94,33 +97,43 @@ public class Tabla {
 				}
 			}
 
-			//temporal
+			// temporal
 			Stack<Produccion> tmp = new Stack<Produccion>();
-			for(int i=0; i<matriz[fila][columna].getPila().size(); i++) {
-				tmp.add(matriz[fila][columna].getPila().get(i));
+			try {
+				for (int i = 0; i < matriz[fila][columna].getPila().size(); i++) {
+					tmp.add(matriz[fila][columna].getPila().get(i));
+
+				}
+
+			} catch (Exception e) {
+				// TODO: handle exception error en automata 
+				System.out.println("error en la pila " + tkn.getColumna()+tkn.getColumna());
 				
+
 			}
-			System.out.println("casilla utilizada " +fila+columna);
-			
 			// shift
 			principal.pop();
 
 			while (tmp.empty() == false) {
-				if(tmp.peek().getNombre().equals("ter")==false)
-				principal.push(tmp.pop());
-				else tmp.pop();
-				System.out.println(principal.peek().getNombre()+" ingresa");
-			} 
+				if (tmp.peek().getNombre().equals("ter") == false)
+					principal.push(tmp.pop());
+				else
+					tmp.pop();
+				System.out.println(principal.peek().getNombre() + " ingresa");
+			}
 
 			// reduce
-			if (principal.peek().isTernimal()) {
-				System.out.println(principal.peek().getNombre()+" se reduce");
-				if (principal.peek().getNombre().equals(nombre)) {
-					principal.pop();
-					reduce = true;
+			if (principal.empty() == false) {
+
+				if (principal.peek().isTernimal()) {
+					System.out.println(principal.peek().getNombre() + " se reduce");
+					if (principal.peek().getNombre().equals(nombre)) {
+						principal.pop();
+						reduce = true;
+					}
 				}
 			}
-			
+
 		}
 	}
 
@@ -128,12 +141,13 @@ public class Tabla {
 //		Stack<Produccion> imp = principal;
 //		do {
 //			System.out.print(imp.pop().getNombre() + " -->");
-//		} while (imp.empty() == false);
+//		} while (imp.empty() == false);F
 		for (int i = 0; i < principal.size(); i++) {
-			System.out.print(principal.get(i).getNombre()+"-->");			
+			System.out.print(principal.get(i).getNombre() + "-->");
 		}
 		System.out.println("");
-		if(principal.empty())System.out.println("fin de archivo");
+		if (principal.empty())
+			System.out.println("fin de archivo");
 	}
 
 	public static void main(String[] args) {
@@ -141,8 +155,8 @@ public class Tabla {
 
 		String a = "numero";
 		tb.recorrido(a);
-		String b = "+";
-		tb.recorrido(b);
+//		String b = "+";
+//		tb.recorrido(b);
 		String c = "numero";
 		tb.recorrido(c);
 		String d = "-";

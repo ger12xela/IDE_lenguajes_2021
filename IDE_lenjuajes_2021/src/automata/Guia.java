@@ -11,14 +11,78 @@ public class Guia {
 	}
 
 	// array de estados predeterminados para el atomata 
-	private int[] estadosAcepatacion = { 1, 2, 3, 4, 6, 7, 8 };
+	private int[] estadosAcepatacion = { 53, 12, 16, 24, 32, 35, 109, 45, 56, 58, 60, 62, 64, 66, 70, 75};
 	private Estado[] estados = { 
-			new Estado(0, '+', 1), 
-			new Estado(0, '*', 1), 
-			new Estado(0, '/', 1), 
-			new Estado(0, '%', 1), 
-			new Estado(0, '%', 1), 
-			new Estado(0, '%', 1),
+			new Estado(0, 'E', 5), 
+			new Estado(5, 'N', 47), 
+			new Estado(47, 'T', 48), 
+			new Estado(48, 'O', 49), 
+			new Estado(49, 'O', 50), 
+			new Estado(50, 'C', 51),
+			new Estado(51, 'E', 52),
+			new Estado(52, 'S', 53), //ACETACION ENTONCES
+			new Estado(5, 'S', 6),
+			new Estado(6, 'C', 7),
+			new Estado(7, 'R', 8),
+			new Estado(9, 'I', 9),
+			new Estado(9, 'B', 10),
+			new Estado(10, 'I', 11),
+			new Estado(11, 'R', 12), // ACEOTACION ESCRIBIR
+			new Estado(0, 'F', 14),
+			new Estado(14, 'I', 15),
+			new Estado(15, 'N', 16),//ACEPTACION FIN
+			new Estado(0, 'R', 18),
+			new Estado(19, 'E', 19),
+			new Estado(19, 'P', 20),
+			new Estado(20, 'E', 21),
+			new Estado(21, 'T', 22),
+			new Estado(22, 'I', 23),
+			new Estado(23, 'R', 24),// ACEPTACION REPETIR
+			new Estado(0, 'I', 26),
+			new Estado(26, 'N', 27),
+			new Estado(27, 'I', 28),
+			new Estado(28, 'C', 29),
+			new Estado(29, 'I', 30),
+			new Estado(30, 'A', 31),
+			new Estado(31, 'R', 32),
+			new Estado(31, 'R', 32),// ACEPTACION INICIAR
+			new Estado(0, 'S', 34),
+			new Estado(34, 'I', 35),// ACEPTACION SI
+			new Estado(0, 'V', 101),
+			new Estado(101, 'E', 102),
+			new Estado(102, 'R', 103),
+			new Estado(103, 'D', 104),
+			new Estado(104, 'A', 105),
+			new Estado(105, 'D', 106),
+			new Estado(106, 'E', 107),
+			new Estado(107, 'R', 108),
+			new Estado(108, 'O', 109),// ACEPTACION VERDADERO
+			new Estado(0, 'F', 41),
+			new Estado(41, 'A', 42),
+			new Estado(42, 'L', 43),
+			new Estado(43, 'S', 44),
+			new Estado(44, 'O', 45),// ACEPTACION FALSO
+			new EstadoRango(0,' ',56,48,57), // Digitos 
+			new EstadoRango(56,' ',56,48,57), // Digitos 
+			new Estado(0, '-', 55),
+			new EstadoRango(55,' ',56,48,57), // Digitos haceptacion numero enteros
+			new Estado(0, ')', 58),// cerrar agrupacion
+			new Estado(0, '(', 60),// abrir agrupacion
+			new Estado(0, '*', 62),// mutiplicacion 
+			new Estado(0, '+', 64),// suma 
+			new Estado(0, '=', 66),// asiganacion 
+			new Estado(0, '/', 68),//  
+			new Estado(68, '/', 69),//  
+			new EstadoRango(69,' ',70,65,90),		// letras mayusculas 
+			new EstadoRango(69,' ',79,97,122), // letras minusculas 
+			new EstadoRango(69,' ',70,48,57), // Digitos                   comentario linea
+			new Estado(0, '"', 73),//  
+			new EstadoRango(73,' ',74,35,250),
+			new Estado(74, '"', 75),//  literal
+			new Estado(0, '_', 77),
+			new EstadoRango(77,' ',2,65,90),		// letras mayusculas 
+			new EstadoRango(2,' ',2,97,122), // letras minusculas 
+			
 			new EstadoRango(0,' ',2,65,90),
 			new EstadoRango(0,' ',2,97,122),
 			new EstadoRango(2,' ',2,65,90),		// letras mayusculas 
